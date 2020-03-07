@@ -1,15 +1,22 @@
 {
     "name": "albert_anderberg/oauth2-clickup",
-    "description": "Oauth2 library",
+    "description": "ClickUp OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "license": "MIT",
     "authors": [
         {
             "name": "Albert Anderberg",
-            "email": "albert@aanet.se"
+            "email": "albert@aanet.se",
+            "homepage": "https://github.com/albert-anderberg"
         }
     ],
-
-
+    "keywords": [
+        "oauth",
+        "oauth2",
+        "client",
+        "authorization",
+        "authorisation",
+        "clickup"
+    ],
     "require": {
         "league/oauth2-client": "^2.4"
     },
@@ -21,12 +28,12 @@
 
     "autoload": {
         "psr-4": {
-            "Stevenmaguire\\OAuth2\\Client\\": "src/"
+            "Albertanderberg\\OAuth2\\Client\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Stevenmaguire\\OAuth2\\Client\\Test\\": "tests/src/"
+            "Albertanderberg\\OAuth2\\Client\\Test\\": "tests/src/"
         }
     }
 }

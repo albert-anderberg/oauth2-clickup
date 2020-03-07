@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevenmaguire\OAuth2\Client\Provider;
+namespace Albertanderberg\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -15,7 +15,7 @@ class ClickUp extends AbstractProvider
     /**
      * @var string Key used in the access token response to identify the resource owner.
      */
-    const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'account_id';
+    const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'client_id';
 
     /**
      * Get authorization url to begin OAuth flow
@@ -24,17 +24,18 @@ class ClickUp extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://api.dropbox.com/oauth2/authorize';
+        return 'https://app.clickup.com/api';
     }
 
     /**
      * Get access token url to retrieve token
      *
+     * @param array $params
      * @return string
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return 'https://api.dropbox.com/oauth2/token';
+        return 'https://app.clickup.com/api/v2/oauth/token';
     }
 
     /**
@@ -46,7 +47,7 @@ class ClickUp extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return 'https://api.dropbox.com/2/users/get_current_account';
+        return 'https://app.clickup.com/api/v2/user';
     }
 
     /**
@@ -65,7 +66,6 @@ class ClickUp extends AbstractProvider
     /**
      * Check a provider response for errors.
      *
-     * @link   https://www.dropbox.com/developers/core/docs
      * @throws IdentityProviderException
      * @param  ResponseInterface $response
      * @param  string $data Parsed response data
@@ -85,20 +85,21 @@ class ClickUp extends AbstractProvider
     /**
      * Generate a user object from a successful user details request.
      *
-     * @param object $response
+     * @param array $response
      * @param AccessToken $token
-     * @return DropboxResourceOwner
+     * @return ClickupResourceOwner
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        return new DropboxResourceOwner($response);
+        return new ClickupResourceOwner($response);
     }
 
     /**
      * Requests resource owner details.
      *
-     * @param  AccessToken $token
+     * @param AccessToken $token
      * @return mixed
+     * @throws IdentityProviderException
      */
     protected function fetchResourceOwnerDetails(AccessToken $token)
     {

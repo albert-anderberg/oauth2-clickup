@@ -1,38 +1,26 @@
-# Dropbox Provider for OAuth 2.0 Client
+# ClickUpProvider for OAuth 2.0 Client
 
-[![Latest Version](https://img.shields.io/github/release/stevenmaguire/oauth2-dropbox.svg?style=flat-square)](https://github.com/stevenmaguire/oauth2-dropbox/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/stevenmaguire/oauth2-dropbox/master.svg?style=flat-square)](https://travis-ci.org/stevenmaguire/oauth2-dropbox)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/stevenmaguire/oauth2-dropbox.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevenmaguire/oauth2-dropbox/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/stevenmaguire/oauth2-dropbox.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevenmaguire/oauth2-dropbox)
-[![Total Downloads](https://img.shields.io/packagist/dt/stevenmaguire/oauth2-dropbox.svg?style=flat-square)](https://packagist.org/packages/stevenmaguire/oauth2-dropbox)
 
-This package provides Dropbox OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/thephpleague/oauth2-client).
+This package provides ClickUp OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/thephpleague/oauth2-client).
 
 ## Installation
 
 To install, use composer:
 
 ```
-composer require stevenmaguire/oauth2-dropbox
-```
-
-**Note:** Due API deprecation, we dropped support to Dropbox API v1. If you need use v1, please use `^2.0.0` version constraint:
-
-```
-composer require "stevenmaguire/oauth2-dropbox:^2.0.0"
+composer require albert_anderberg/oauth2-clickup
 ```
 
 ## Usage
 
-Usage is the same as The League's OAuth client, using `\Stevenmaguire\OAuth2\Client\Provider\Dropbox` as the provider.
+Usage is the same as The League's OAuth client, using `\Albertanderberg\OAuth2\Client\Provider\ClickUp` as the provider.
 
 ### Authorization Code Flow
 
 ```php
-$provider = new Stevenmaguire\OAuth2\Client\Provider\Dropbox([
-    'clientId'          => '{dropbox-client-id}',
-    'clientSecret'      => '{dropbox-client-secret}',
+$provider = new Albertanderberg\OAuth2\Client\Provider\ClickUp([
+    'clientId'          => '{clickup-client-id}',
+    'clientSecret'      => '{clickup-client-secret}',
     'redirectUri'       => 'https://example.com/callback-url'
 ]);
 
@@ -78,7 +66,7 @@ if (!isset($_GET['code'])) {
 ```
 
 ## Refreshing a Token
-Dropbox's OAuth implementation does not use refresh tokens. Access tokens are valid until a user revokes access manually, or until an app deauthorizes itself.
+ClickUp's OAuth implementation does not use refresh tokens. Access tokens are valid until a user revokes access manually.
 
 ## Testing
 
@@ -86,17 +74,6 @@ Dropbox's OAuth implementation does not use refresh tokens. Access tokens are va
 $ ./vendor/bin/phpunit
 ```
 
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/stevenmaguire/oauth2-dropbox/blob/master/CONTRIBUTING.md) for details.
-
-
-## Credits
-
-- [Steven Maguire](https://github.com/stevenmaguire)
-- [All Contributors](https://github.com/stevenmaguire/oauth2-dropbox/contributors)
-
-
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/stevenmaguire/oauth2-dropbox/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/albert-anderberg/oauth2-clickup/blob/master/LICENSE) for more information.

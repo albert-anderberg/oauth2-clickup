@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevenmaguire\OAuth2\Client\Provider;
+namespace Albertanderberg\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Tool\ArrayAccessorTrait;
@@ -32,7 +32,7 @@ class ClickupResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->getValueByKey($this->response, 'account_id');
+        return $this->getValueByKey($this->response, 'client_id');
     }
 
     /**
