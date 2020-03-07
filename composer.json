@@ -1,5 +1,5 @@
 {
-    "name": "albert_anderberg/oauth2-clickup",
+    "name": "albert-anderberg/oauth2-clickup",
     "description": "ClickUp OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "license": "MIT",
     "authors": [
