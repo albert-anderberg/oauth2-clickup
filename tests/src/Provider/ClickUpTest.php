@@ -92,7 +92,6 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         $client->shouldReceive('send')
             ->withArgs(function (RequestInterface $request) {
                 $body = json_decode($request->getBody(), true);
-                var_dump($body);
                 return
                     $body['code'] === 'mock_authorization_code'
                     && $body['client_id'] === 'mock_client_id'
