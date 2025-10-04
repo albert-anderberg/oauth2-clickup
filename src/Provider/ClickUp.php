@@ -44,7 +44,7 @@ class ClickUp extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return 'https://app.clickup.com/api/v2/oauth/token';
+        return 'https://api.clickup.com/api/v2/oauth/token';
     }
 
     /**
@@ -56,7 +56,7 @@ class ClickUp extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return 'https://app.clickup.com/api/v2/user';
+        return 'https://api.clickup.com/api/v2/user';
     }
 
     /**
