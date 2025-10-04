@@ -17,6 +17,15 @@ class ClickUp extends AbstractProvider
      */
     const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'client_id';
 
+
+    public function __construct(array $options = [], array $collaborators = []) {
+
+        if (empty($collaborators['optionProvider'])) {
+            $collaborators['optionProvider'] = new ClickUpOptionProvider();
+        }
+
+        parent::__construct($options, $collaborators);
+    }
     /**
      * Get authorization url to begin OAuth flow
      *

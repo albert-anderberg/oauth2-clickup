@@ -4,6 +4,7 @@ namespace Albertanderberg\OAuth2\Client\Test\Provider;
 
 use League\OAuth2\Client\Tool\QueryBuilderTrait;
 use Mockery as m;
+use Psr\Http\Message\RequestInterface;
 
 class ClickUpTest extends \PHPUnit\Framework\TestCase
 {
@@ -73,12 +74,32 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
 
     public function testGetAccessToken()
     {
+        // Mock expected return format from ClickUp
+        $stream = m::mock('Psr\Http\Message\StreamInterface');
+        $stream->shouldReceive('__toString')
+            ->andReturn('{"access_token": "mock_access_token", "token_type": "Bearer"}');
+
         $response = m::mock('Psr\Http\Message\ResponseInterface');
-        $response->shouldReceive('getBody')->andReturn('{"access_token": "mock_access_token"}');
-        $response->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
+        $response->shouldReceive('getBody')
+            ->times(1)
+            ->andReturn($stream);
+
+        $response->shouldReceive('getHeader')
+            ->times(1)
+            ->andReturn(['content-type' => 'json']);
 
         $client = m::mock('GuzzleHttp\ClientInterface');
-        $client->shouldReceive('send')->times(1)->andReturn($response);
+        $client->shouldReceive('send')
+            ->withArgs(function (RequestInterface $request) {
+                $body = json_decode($request->getBody(), true);
+                var_dump($body);
+                return
+                    $body['code'] === 'mock_authorization_code'
+                    && $body['client_id'] === 'mock_client_id'
+                    && $body['client_secret'] === 'mock_secret';
+            })
+            ->times(1)
+            ->andReturn($response);
         $this->provider->setHttpClient($client);
 
         $token = $this->provider->getAccessToken('authorization_code', ['code' => 'mock_authorization_code']);
