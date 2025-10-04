@@ -96,11 +96,11 @@ class ClickUp extends AbstractProvider
      *
      * @param array $response
      * @param AccessToken $token
-     * @return ClickupResourceOwner
+     * @return ClickUpResourceOwner
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        return new ClickupResourceOwner($response);
+        return new ClickUpResourceOwner($response);
     }
 
     /**
