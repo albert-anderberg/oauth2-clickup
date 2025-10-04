@@ -131,4 +131,14 @@ class ClickUp extends AbstractProvider
             'approval_prompt' => []
         ], $options));
     }
+
+    /**
+     * Returns the default headers used by this provider
+     *
+     * @return string[]
+     */
+    protected function getDefaultHeaders(): array
+    {
+        return ['accept' => 'application/json'];
+    }
 }
