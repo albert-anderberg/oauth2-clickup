@@ -6,7 +6,7 @@ use League\OAuth2\Client\Tool\QueryBuilderTrait;
 use Mockery as m;
 use Psr\Http\Message\RequestInterface;
 
-class ClickUpTest extends \PHPUnit\Framework\TestCase
+final class ClickUpTest extends \PHPUnit\Framework\TestCase
 {
     use QueryBuilderTrait;
 
