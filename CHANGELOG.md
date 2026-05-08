@@ -1,6 +1,11 @@
 # Changelog
 All Notable changes to `oauth2-clickup` will be documented in this file
 
+
+## 1.0.4 - 2026-05-08
+### Changed
+Dependency versions updated.
+
 ## 1.0.3 - 2025-10-04
 ### Changed
 - Changed urls for access token and resource owner.
