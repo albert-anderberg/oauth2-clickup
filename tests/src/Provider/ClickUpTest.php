@@ -27,7 +27,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         parent::tearDown();
     }
 
-    public function testAuthorizationUrl()
+    public function testAuthorizationUrl(): void
     {
         $url = $this->provider->getAuthorizationUrl([
             'approval_prompt' => []
@@ -44,7 +44,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         $this->assertNotNull($this->provider->getState());
     }
 
-    public function testScopes()
+    public function testScopes(): void
     {
         $scopeSeparator = ',';
         $options = ['scope' => [uniqid(), uniqid()]];
@@ -54,7 +54,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString($encodedScope, $url);
     }
 
-    public function testGetAuthorizationUrl()
+    public function testGetAuthorizationUrl(): void
     {
         $url = $this->provider->getAuthorizationUrl();
         $uri = parse_url($url);
@@ -62,7 +62,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('/api', $uri['path']);
     }
 
-    public function testGetBaseAccessTokenUrl()
+    public function testGetBaseAccessTokenUrl(): void
     {
         $params = [];
 
@@ -72,7 +72,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('/api/v2/oauth/token', $uri['path']);
     }
 
-    public function testGetAccessToken()
+    public function testGetAccessToken(): void
     {
         // Mock expected return format from ClickUp
         $stream = m::mock('Psr\Http\Message\StreamInterface');
