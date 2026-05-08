@@ -21,7 +21,7 @@ class ClickUpTest extends \PHPUnit\Framework\TestCase
         ]);
     }
 
-    public function tearDown() : void
+    protected function tearDown() : void
     {
         m::close();
         parent::tearDown();
